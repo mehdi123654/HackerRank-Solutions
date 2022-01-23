@@ -7,8 +7,8 @@ int main()
 
     int w;
 
-    // do
-    // {
+    do
+     {
     cin >> w;
     try
     {
@@ -33,6 +33,6 @@ int main()
     {
         cerr << ch << endl;
     }
-    //} while (w < 1 || w > 100);
+    } while (w < 1 || w > 100);
     return 0;
 }
