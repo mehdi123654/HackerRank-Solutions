@@ -1,60 +1,52 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-class Box
-{
-private:
-	int l;
-	int b;
-	int h;
-
-public:
-	Box();
-	Box(Box &B);
-	Box(int, int, int);
-	int getLength() { return l; }
-	int getBreadth() { return b; }
-	int getHeight() { return h; }
-	bool operator<(Box &B);
-	friend ostream &operator<<(ostream &out, Box &B)
-	{
-		return(out<<B.getLength() << " "<< B.getBreadth() << " "<< B.getHeight() << " ")<<endl;
-	}
-	long long CalculateVolume();
+class Box{
+    private:
+    int l, b, h;
+    public:
+    Box(){
+        l = 0;
+        b = 0;
+        h = 0;
+    }
+    Box(int length, int breadth, int height){
+        l = length;
+        b = breadth;
+        h = height;
+    }
+    Box(const Box& B){
+        l = B.l;
+        b = B.b;
+        h = B.h;
+    }
+    
+    int getLenght(){
+        return l;
+    }
+    int getBreadth(){
+        return b;
+    }
+    int getHeight(){
+        return h;
+    }
+    long long CalculateVolume(){
+        return (long long)l*b*h;
+    }
+    
+    friend bool operator < ( Box&A,Box& B){
+        if( (A.l < B.l) || ((A.b < B.b) && (A.l == B.l)) || ((A.h < B.h) && (A.l == B.l) && (A.b == B.b)) ){
+            return true;
+        }else{
+            return false;
+        }
+    };
+    
+    friend ostream& operator<< (ostream& output, const Box& B){
+        output << B.l << " " << B.b << " " << B.h;
+        return output;
+    }
 };
-Box::Box()
-{
-	l = b = h = 0;
-}
-Box::Box(int b, int l, int h)
-{
-	this->b = b;
-	this->l = l;
-	this->h = h;
-}
-Box::Box(Box &B)
-{
-	B.b = this->b;
-	B.h = this->h;
-	B.l = this->l;
-}
-/*bool Box::operator<(Box &B)
-{
-	if(this->l<B.l)
-	return true;
-	if ((this->b<B.b)&&(this->l==B.l))
-	return true;
-	if ((this->h<B.h)&&(this->b==B.b)&&(this->l==B.l))
-	return true;
-}*/
-bool Box::operator<(Box &B)
-{
-	return ((this->l < B.l) || ((this->b < B.b) && (this->l == B.l)) || ((this->h < B.h) && (this->b == B.b) && (this->l == B.l)));
-}
-long long Box::CalculateVolume()
-{
-	return (l*b*h);
-}
 // Implement the class Box
 // l,b,h are integers representing the dimensions of the box
 
