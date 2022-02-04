@@ -1,1 +1,1 @@
-//fiha dynami_cast haja mezlt manaarefhech
+//fiha dynamic_cast haja mezlt manaarefhech
